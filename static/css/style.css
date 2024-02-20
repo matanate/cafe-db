@@ -1,0 +1,107 @@
+/* Global Styles */
+html,
+body {
+  height: 100%;
+}
+
+/* Form Styles */
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Search List Styles */
+.search-list {
+  position: fixed;
+  z-index: 1000;
+  max-height: 300px;
+  overflow: auto;
+  font-weight: bold;
+}
+
+/* List Group Item Image Styles */
+.list-group-item-img {
+  background-size: cover;
+  width: 50px;
+  height: 75px;
+  float: left;
+  margin-right: 15px;
+  border-radius: 6px;
+  font-family: Poppins, sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: black;
+}
+
+/* Page Navigation Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Updated CSS for cafe-item */
+#cafes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cafe-item {
+  width: 300px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.cafe-item:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.cafe-item h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cafe-item p {
+  margin: 5px 0;
+}
+
+.cafe-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Style the link */
+.cafe-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.cafe-item a:hover {
+  text-decoration: underline;
+}

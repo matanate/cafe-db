@@ -1,0 +1,170 @@
+{% extends "base.html" %} {% block title %}Cafe&Wifi{% endblock %} {% block body
+%} {{ super() }}
+<div class="container">
+  <h1>Café Review API Information</h1>
+</div>
+<div class="container mt-5">
+  <p>
+    Welcome to the Café Review API. Below, you'll find information about the
+    available API endpoints that return JSON responses and examples of their
+    output.
+  </p>
+
+  <h2>Endpoints</h2>
+
+  <ul>
+    <li>
+      <strong>Random Café:</strong>
+      <code>/random</code>
+      <p>Get information about a random café.</p>
+      <pre>
+{
+    "cafe": {
+        "id": 1,
+        "name": "Example Café",
+        "map_url": "https://example.com/map",
+        "img_url": "https://example.com/image",
+        "location": "Example Location",
+        "seats": "20",
+        "has_toilet": true,
+        "has_wifi": true,
+        "has_sockets": true,
+        "can_take_calls": false,
+        "coffee_price": "$3.50",
+        "author_name": "John Doe"
+    }
+}
+          </pre
+      >
+    </li>
+
+    <li>
+      <strong>All Cafés:</strong>
+      <code>/all</code>
+      <p>Get information about all cafés.</p>
+      <pre>
+{
+    "cafes": [
+        {
+            "id": 1,
+            "name": "Café One",
+            "map_url": "https://cafeone.com/map",
+            "img_url": "https://cafeone.com/image",
+            "location": "City Center",
+            "seats": "30",
+            "has_toilet": true,
+            "has_wifi": true,
+            "has_sockets": true,
+            "can_take_calls": true,
+            "coffee_price": "$4.00",
+            "author_name": "Alice"
+        },
+        {
+            "id": 2,
+            "name": "Café Two",
+            "map_url": "https://cafetwo.com/map",
+            "img_url": "https://cafetwo.com/image",
+            "location": "Suburb",
+            "seats": "25",
+            "has_toilet": false,
+            "has_wifi": true,
+            "has_sockets": true,
+            "can_take_calls": false,
+            "coffee_price": "$3.50",
+            "author_name": "Bob"
+        }
+    ]
+}
+          </pre
+      >
+    </li>
+
+    <li>
+      <strong>Search Cafés by Location:</strong>
+      <code>/search_loc?loc=example_location</code>
+      <p>Search for cafés by location.</p>
+      <pre>
+{
+    "cafes": [
+        {
+            "id": 1,
+            "name": "Example Café",
+            "map_url": "https://example.com/map",
+            "img_url": "https://example.com/image",
+            "location": "Example Location",
+            "seats": "20",
+            "has_toilet": true,
+            "has_wifi": true,
+            "has_sockets": true,
+            "can_take_calls": false,
+            "coffee_price": "$3.50",
+            "author_name": "John Doe"
+        }
+    ]
+}
+          </pre
+      >
+    </li>
+
+    <li>
+      <strong>Search Cafés by Name:</strong>
+      <code>/search_name?name=example_cafe</code>
+      <p>Search for cafés by name.</p>
+      <pre>
+{
+    "cafes": [
+        {
+            "id": 1,
+            "name": "Example Café",
+            "map_url": "https://example.com/map",
+            "img_url": "https://example.com/image",
+            "location": "Example Location",
+            "seats": "20",
+            "has_toilet": true,
+            "has_wifi": true,
+            "has_sockets": true,
+            "can_take_calls": false,
+            "coffee_price": "$3.50",
+            "author_name": "John Doe"
+        }
+    ]
+}
+          </pre
+      >
+    </li>
+
+    <li>
+      <strong>Search Cafés by Location (Unfound Result):</strong>
+      <code>/search_loc?loc=non_existent_location</code>
+      <p>No cafés found for the provided location.</p>
+      <pre>
+{
+    "cafes": {
+        "error": {
+            "Not Found": "Sorry, we don't have a cafe in that location."
+        }
+    }
+}
+          </pre
+      >
+    </li>
+
+    <li>
+      <strong>Search Cafés by Name (Unfound Result):</strong>
+      <code>/search_name?name=non_existent_cafe</code>
+      <p>No cafés found with the provided name.</p>
+      <pre>
+{
+    "cafes": {
+        "error": {
+            "Not Found": "Sorry, we don't have a cafe with that name."
+        }
+    }
+}
+          </pre
+      >
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

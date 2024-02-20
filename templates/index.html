@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Cafe&Wifi{% endblock %} {% block body
+%} {{ super() }}
+<div class="container">
+  <h1>Welcome to the Cafe & Wifi Database</h1>
+</div>
+<div class="container" id="cafes-container"></div>
+<script type="text/javascript">
+  const userId = {{ current_user.id|safe if current_user.is_authenticated else 'null'|safe }};
+</script>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+{% endblock %}

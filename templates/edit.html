@@ -1,0 +1,162 @@
+{% extends "base.html" %} {% block title %}Cafe&Wifi{% endblock %} {% block body
+%}{{ super() }}
+<div class="container">
+  <h1 class="mb-4">Edit Cafe: {{cafe.name}}</h1>
+</div>
+<div class="container mt-5">
+  <form method="POST" id="cafeForm">
+    <div class="form-group">
+      <label class="form-label" for="name">Cafe Name:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="name"
+        name="name"
+        value="{{cafe.name}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="map_url">Google Maps URL:</label>
+      <input
+        class="form-control"
+        type="url"
+        id="map_url"
+        name="map_url"
+        value="{{cafe.map_url}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="img_url">Image URL:</label>
+      <input
+        class="form-control"
+        type="url"
+        id="img_url"
+        name="img_url"
+        value="{{cafe.img_url}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="loc">Location:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="loc"
+        name="loc"
+        value="{{cafe.location}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="sockets">Has Sockets:</label>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="sockets"
+        name="sockets"
+        {%
+        if
+        cafe.has_sockets%}
+        checked{%
+        endif
+        %}
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="toilet">Has Toilet:</label>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="toilet"
+        name="toilet"
+        {%
+        if
+        cafe.has_toilet%}
+        checked{%
+        endif
+        %}
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="wifi">Has Wi-Fi:</label>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="wifi"
+        name="wifi"
+        {%
+        if
+        cafe.has_wifi%}
+        checked{%
+        endif
+        %}
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="calls">Can Take Calls:</label>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="calls"
+        name="calls"
+        {%
+        if
+        cafe.can_take_calls
+        %}
+        checked
+        {%
+        endif
+        %}
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="seats">Seating Capacity:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="seats"
+        name="seats"
+        pattern="(\d+\s*-\s*\d+|\d+)"
+        title="Please enter a valid seating capacity format (e.g., 10, 10 - 20)"
+        value="{{cafe.seats}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="coffee_price">Coffee Price:</label>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <select
+            class="form-control"
+            id="currency_symbol"
+            name="currency_symbol"
+            selected="{{cafe.coffee_price.split()[1]}}"
+            required
+          >
+            <option value="$" {% if cafe.coffee_price.split()[1] == '$' %}selected{% endif %}>$</option>
+            <option value="£" {% if cafe.coffee_price.split()[1] == '£' %}selected{% endif %}>£</option>
+            <option value="€" {% if cafe.coffee_price.split()[1] == '€' %}selected{% endif %}>€</option>
+            <option value="₪" {% if cafe.coffee_price.split()[1] == '₪' %}selected{% endif %}>₪</option>
+          </select>
+        </span>
+        <input
+          class="form-control"
+          type="number"
+          id="coffee_price_number"
+          name="coffee_price_number"
+          value="{{cafe.coffee_price.split()[0]}}"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Update Cafe</button>
+    </div>
+  </form>
+  </div>
+
+<script src="{{url_for('static', filename='js/add.js')}}"></script>
+{% endblock %}
