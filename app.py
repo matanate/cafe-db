@@ -344,7 +344,10 @@ def edit_cafe(cafe_id):
         return abort(403)
     if request.method == "POST":
         name = request.form.get("name")
-        if db.session.query(Cafe).filter(Cafe.name == name).first():
+        if (
+            name != cafe.name
+            and db.session.query(Cafe).filter(Cafe.name == name).first()
+        ):
             flash(f"Sorry, a cafe with the name {name} already exists.", "warning")
         else:
             cafe.coffee_price = f'{request.form.get("coffee_price")} {request.form.get("currency_symbol")}'
