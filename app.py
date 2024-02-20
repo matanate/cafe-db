@@ -62,6 +62,7 @@ class Cafe(db.Model):
             column.name: getattr(self, column.name) for column in self.__table__.columns
         }
 
+
 # Check if tables exist before creating them
 with app.app_context():
     inspector = inspect(db.engine)
@@ -346,7 +347,7 @@ def edit_cafe(cafe_id):
         if db.session.query(Cafe).filter(Cafe.name == name).first():
             flash(f"Sorry, a cafe with the name {name} already exists.", "warning")
         else:
-            cafe.coffee_price = f"{request.form.get("coffee_price")} {request.form.get("currency_symbol")}"
+            cafe.coffee_price = f'{request.form.get("coffee_price")} {request.form.get("currency_symbol")}'
             cafe.name = name
             cafe.map_url = request.form.get("map_url")
             cafe.img_url = request.form.get("img_url")
@@ -377,9 +378,11 @@ def delete_cafe(cafe_id):
         flash("Sorry a cafe with that id was not found in the database.", "warning")
         return redirect(url_for("home"))
 
+
 @app.route("/api-info")
 def api_info():
     return render_template("api-info.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
