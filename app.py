@@ -14,6 +14,7 @@ from flask_migrate import Migrate, migrate
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship
+from sqlalchemy import inspect
 import random
 from datetime import datetime
 import os
@@ -27,9 +28,6 @@ app.config["SECRET_KEY"] = SECRET_KEY
 app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
-# initialize tables if they don't already exist
-# db.create_all()
 
 
 # User model with relationship to Reviews
@@ -63,6 +61,16 @@ class Cafe(db.Model):
         return {
             column.name: getattr(self, column.name) for column in self.__table__.columns
         }
+
+# Check if tables exist before creating them
+with app.app_context():
+    inspector = inspect(db.engine)
+
+    if not inspector.has_table("users"):
+        db.create_all()
+
+    if not inspector.has_table("cafe"):
+        db.create_all()
 
 
 # Set Login manager
