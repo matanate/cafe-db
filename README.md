@@ -90,7 +90,7 @@ Feel free to contribute by opening issues or pull requests. Your feedback and co
 ## Deployment (Live Demo)
 
 Check out the live demo:
-[Live Demo](https://cafe-db.onrender.com)
+[Live Demo](https://cafe-db-pv9g.onrender.com)
 
 ## License
 
